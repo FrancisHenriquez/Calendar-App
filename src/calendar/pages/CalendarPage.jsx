@@ -1,7 +1,13 @@
+import { Nabar } from "../components/Nabar"
 
 
 export const CalendarPage = () => {
   return (
-    <div>CalendarPage</div>
+    <>
+      <Nabar />
+
+    
+    </>
+
   )
 }
