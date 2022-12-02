@@ -3,19 +3,10 @@ import { Calendar, dateFnsLocalizer } from 'react-big-calendar'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 
 import {addHours, format, parse, startOfWeek, getDay} from "date-fns"
-
-
-const locales = {
-  'en-US': 'enUS',
-}
-
-const localizer = dateFnsLocalizer({
-  format,
-  parse,
-  startOfWeek,
-  getDay,
-  locales,
-})
+import enUS from "date-fns/esm/locale/en-US"
+import { localizer } from "../../helpers/calendarLocalizer"
+import { getMessagesEs } from "../../helpers"
+import { CalendarEven } from "../components/CalendarEven"
 
 const events = [{
   title: 'Ragnarok',
@@ -31,16 +22,39 @@ const events = [{
 }]
 
 export const CalendarPage = () => {
+
+  const eventStyleGetter = (event, start, end, isSelected) => {
+    
+
+    const style = {
+      backgroundColor: '#afaf',
+      borderRadius: '0px',
+      opacity: 0.8,
+      color: 'white'
+    }
+
+    return{
+        style
+    }
+  
+  
+  }
+
   return (
     <>
       <Nabar />
       <div>
           <Calendar
-          localizer={localizer}
+          localizer={ localizer }
           events={events}
           startAccessor="start"
           endAccessor="end"
           style={{ height: 'calc(100vh - 80px)' }}
+          // messages = { getMessagesEs()} For spanish translating 
+          eventPropGetter={ eventStyleGetter}
+          components= {{
+            event: CalendarEven
+          }}
     />
   </div>
     
