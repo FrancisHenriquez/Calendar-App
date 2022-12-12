@@ -8,6 +8,7 @@ import { localizer } from "../../helpers/calendarLocalizer"
 import { getMessagesEs } from "../../helpers"
 import { CalendarEven } from "../components/CalendarEven"
 import { useState } from "react"
+import { CalendarModal } from "../components/CalendarModal"
 
 const events = [{
   title: 'Ragnarok',
@@ -76,7 +77,7 @@ export const CalendarPage = () => {
           onView = { onViewChanged }
     />
   </div>
-    
+    <CalendarModal />
     </>
 
   )
