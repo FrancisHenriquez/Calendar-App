@@ -6,9 +6,11 @@ import {addHours, format, parse, startOfWeek, getDay} from "date-fns"
 import enUS from "date-fns/esm/locale/en-US"
 import { localizer } from "../../helpers/calendarLocalizer"
 import { getMessagesEs } from "../../helpers"
-import { CalendarEven } from "../components/CalendarEven"
 import { useState } from "react"
 import { CalendarModal } from "../components/CalendarModal"
+import { CalendarEvent } from "../components/CalendarEvent"
+
+
 
 const events = [{
   title: 'Ragnarok',
@@ -70,14 +72,16 @@ export const CalendarPage = () => {
           // messages = { getMessagesEs()} For spanish translating 
           eventPropGetter={ eventStyleGetter}
           components= {{
-            event: CalendarEven
+            event: CalendarEvent
           }}
           onDoubleClickEvent = { onDoubleClick }
           onSelectEvent = { onSelect }
           onView = { onViewChanged }
     />
   </div>
-    <CalendarModal />
+
+    <CalendarModal/>
+
     </>
 
   )
