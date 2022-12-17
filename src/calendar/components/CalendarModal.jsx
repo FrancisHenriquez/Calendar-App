@@ -8,6 +8,7 @@ import { differenceInMinutes } from "date-fns";
 import Swal from "sweetalert2";
 import 'sweetalert2/dist/sweetalert2.min.css'
 import { useMemo } from "react";
+import { useUiStore } from "../../hooks";
 
 
 
@@ -25,7 +26,8 @@ const customStyles = {
 Modal.setAppElement('#root')
 
 export const CalendarModal = () => {
-  
+
+  const { isDateModalOpen } = useUiStore
   const [formSubmitted, setformSubmitted] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
 
@@ -62,7 +64,8 @@ export const CalendarModal = () => {
 
   const onCloseModal = ( ) => {
     console.log('cerrando modal');
-    setIsOpen( false );
+    //! setIsOpen( false ); aqui el hardcode de la mierda esta
+
   }
 
   const onSubmit = ( event ) => {
@@ -84,7 +87,7 @@ export const CalendarModal = () => {
 
   return (
     //TODO 
-    <Modal isOpen={ isOpen }
+    <Modal isOpen={ isDateModalOpen }
          
           onRequestClose={ onCloseModal }
           style={ customStyles }
