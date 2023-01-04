@@ -1,7 +1,7 @@
-import { Nabar } from "../components/Nabar"
+
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
-
+import { Nabar } from "../components/Nabar"
 import {addHours, format, parse, startOfWeek, getDay} from "date-fns"
 import enUS from "date-fns/esm/locale/en-US"
 import { localizer } from "../../helpers/calendarLocalizer"
@@ -9,6 +9,8 @@ import { getMessagesEs } from "../../helpers"
 import { useState } from "react"
 import { CalendarModal } from "../components/CalendarModal"
 import { CalendarEvent } from "../components/CalendarEvent"
+import { useUiStore } from "../../hooks"
+// import { onOpenDateModal } from "../../store/ui/uiSlice"
 
 
 
@@ -26,6 +28,8 @@ const events = [{
 }]
 
 export const CalendarPage = () => {
+
+  const { openDateModal } = useUiStore();
 
   const [ lastView, setLastView] = useState(localStorage.getItem('lastView') || 'week')
 
@@ -45,12 +49,15 @@ export const CalendarPage = () => {
   }
 
   const onDoubleClick = (event) => {
-    console.log({ doubleClick: event })
+    // console.log({ doubleClick: event });
+    console.log("first")
+    openDateModal();
+    
 
   }
 
   const onSelect = (event) => {
-    console.log({ click: event })
+    // console.log({ click: event })
   }
 
   const onViewChanged = (event) => {

@@ -12,6 +12,7 @@ import { useUiStore } from "../../hooks";
 
 
 
+
 const customStyles = {
   content: {
     top: '50%',
@@ -27,7 +28,7 @@ Modal.setAppElement('#root')
 
 export const CalendarModal = () => {
 
-  const { isDateModalOpen } = useUiStore
+  const { isDateModalOpen } = useUiStore()
   const [formSubmitted, setformSubmitted] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
 
@@ -63,8 +64,7 @@ export const CalendarModal = () => {
 }
 
   const onCloseModal = ( ) => {
-    console.log('cerrando modal');
-    //! setIsOpen( false ); aqui el hardcode de la mierda esta
+    setIsOpen( false );
 
   }
 
@@ -72,7 +72,6 @@ export const CalendarModal = () => {
     event.preventDefault();
 
     const difference = differenceInMinutes ( formValues.end, formValues.start );
-    console.log(difference);
     if ( isNaN( difference ) || difference <= 0 ) {
       Swal.fire('Fechas ingresadas incorrectas', 'Revisar fechas ingresadas','error')
       return; 
@@ -83,6 +82,7 @@ export const CalendarModal = () => {
     console.log(formValues);
 
   }
+ console.log({isDateModalOpen})
 
 
   return (
@@ -91,7 +91,7 @@ export const CalendarModal = () => {
          
           onRequestClose={ onCloseModal }
           style={ customStyles }
-          // className = "modal" fucks the modal up, idk why 
+          // className = "modal" //!fucks the modal up, idk why 
           // overlayClassName="modal-fondo"
                              >
             <h1> Nuevo evento </h1>
