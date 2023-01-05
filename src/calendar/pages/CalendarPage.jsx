@@ -29,7 +29,7 @@ const events = [{
 
 export const CalendarPage = () => {
 
-  const { openDateModal } = useUiStore();
+  const { openDateModal, closeDateModal } = useUiStore();
 
   const [ lastView, setLastView] = useState(localStorage.getItem('lastView') || 'week')
 
@@ -50,7 +50,7 @@ export const CalendarPage = () => {
 
   const onDoubleClick = (event) => {
     // console.log({ doubleClick: event });
-    console.log("first")
+    // console.log("first")
     openDateModal();
     
 
@@ -58,6 +58,7 @@ export const CalendarPage = () => {
 
   const onSelect = (event) => {
     // console.log({ click: event })
+    
   }
 
   const onViewChanged = (event) => {
