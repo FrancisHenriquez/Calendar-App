@@ -9,27 +9,17 @@ import { getMessagesEs } from "../../helpers"
 import { useState } from "react"
 import { CalendarModal } from "../components/CalendarModal"
 import { CalendarEvent } from "../components/CalendarEvent"
-import { useUiStore } from "../../hooks"
-// import { onOpenDateModal } from "../../store/ui/uiSlice"
+import { useUiStore, useCalendarStore } from "../../hooks"
 
 
 
-const events = [{
-  title: 'Ragnarok',
-  notes: 'Lest brign destruction',
-  start: new Date,
-  end: addHours( new Date() , 2),
-  bgColor: '#afaf',
-  user: {
-    _id: '0795',
-    name: ' LordConfle '
-  }
 
-}]
+
 
 export const CalendarPage = () => {
 
-  const { openDateModal, closeDateModal } = useUiStore();
+  const { openDateModal, } = useUiStore();
+  const { events } = useCalendarStore();
 
   const [ lastView, setLastView] = useState(localStorage.getItem('lastView') || 'week')
 
